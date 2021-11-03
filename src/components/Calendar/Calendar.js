@@ -21,6 +21,8 @@ class Calendar extends Component {
 	static defaultProps = {
 		onChange: () => {},
 		className: '',
+		clearable: false,
+		clearableBtn: null,
 		language: 'NE',
 		theme: 'default',
 		dateFormat: 'YYYY-MM-DD',
@@ -29,6 +31,7 @@ class Calendar extends Component {
 		maxDate: '',
 		defaultDate: '',
 		hideDefaultValue: false,
+		inputProps: {}
 	};
 
 	state = {
@@ -387,7 +390,7 @@ class Calendar extends Component {
 
 	render() {
 		return (
-			<div style={{ position: 'relative' }}>
+			<div>
 				<div
 					ref={this.wrapperRef}
 					style={{ top: this.inputRef.current ? this.inputRef.current.clientHeight + 5 : 31 }}
@@ -436,6 +439,7 @@ class Calendar extends Component {
 									/>{' '}
 								</div>
 							</div>
+							<div>{this.props.clearable && React.createElement(this.props.clearableBtn, { onClick: this.props.clearableClickHandler, children: this.props.clearableBtnText })}</div>
 						</div>
 					)}
 				</div>
@@ -444,10 +448,11 @@ class Calendar extends Component {
 					readOnly
 					className={`${styles['react-calendar__input']} ${this.props.className}`}
 					style={{ ...this.props.style }}
-					placeholder={this.props.placeholder ?? 'select date'}
+					placeholder={this.props.placeholder}
 					onClick={() => this.setState({ showCalendar: true })}
 					type='text'
 					defaultValue={this.state.hideDefaultValue ? '' : this.state.formatedDate}
+					{...this.props.inputProps}
 				/>
 			</div>
 		);
