@@ -1,10 +1,13 @@
 {
 	"name": "@quoin/nepali-datepicker-reactjs",
-	"version": "1.2.1",
+	"version": "1.2.2",
 	"description": "Nepali Datepicker Reactjs",
 	"author": "Shubham Dhakal",
 	"license": "MIT",
-	"repository": "quoin/nepali-datepicker-reactjs",
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/Quoin/nepali-datepicker-reactjs"
+	},
 	"main": "dist/index.js",
 	"module": "dist/index.modern.js",
 	"source": "src/index.js",
